@@ -12,10 +12,6 @@ String.prototype.blank = function blank() {
 Array.prototype.last = function last() {
   return this.slice(-1);
 }
-let a = [1, 45, 65, 83, 3, 24];
-console.log(a.last()[0]);
-
-
 
 // Returns true for a palindrome, false otherwise.
 function palindrome(string) {
@@ -27,6 +23,11 @@ function palindrome(string) {
 function Phrase(content) {
 
   this.content = content;
+
+  // Returns letters of input string.
+  this.letters = function letters() { 
+    return (this.content.match(/[a-zA-Z]/g) || []).join("");
+  }
 
   // Returns lower-case version of input string.
   this.processor = function(string) {
@@ -40,7 +41,7 @@ function Phrase(content) {
 
   // Returns content processed for palindrome testing.
   this.processedContent = function processedContent() {
-    return this.processor(this.content);
+    return this.processor(this.letters());
   }
 
   // Returns true for a palindrome, false otherwise.
